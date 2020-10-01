@@ -9,6 +9,7 @@ La manera más común de unir estos dos sensores para suavizar el ruido en la me
 
 
 La ecuación para calcular el ángulo usando el filtro de complemento es:
+
 angulo = 0.98(angulo + Wgiroscopio*dt) + 0.02(ANGacelerometro)
 
 
