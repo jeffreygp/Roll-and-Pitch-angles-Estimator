@@ -2,15 +2,15 @@
 Estimating roll and pitch angles of an aeroplane while using Giroscopy and Accelerometer measuments and the complementary filter.
 
 
-El problema del acelerómetro es que es muy susceptible a vibraciones, teniendo en cuenta que esa es parte de su función, eso afecta el cálculo de la orientación produciendo mucho ruido. Y el problema del giroscopio es que al integrar la velocidad angular debido a las imprecisiones en la toma de las muestras y a las del mismo sensor se acumula un error que genera una desviación con el paso del tiempo. Sin embargo, este no es susceptible a ruido por lo que, en la práctica, se utilizan estos dos sensores en conjunto para tener mediciones más confiables, aprovechando que el acelerómetro no tiene desviación y el giroscopio no tiene ruido.
+The accelerometer problem is very susceptible to vibrations, since it is part of its function, it affects the orientation calculation producing a lot of noise. The problem with gyroscopes is that when integrating the angular velocity due to inaccuracies in the taking of changes and the sensorism accumulates an error that generates a deviation with the passage of time. However, it is not susceptible to noise because, in practice, these sensors are used together to have more reliable measurements, approving that the accelerometer does not drift and the gyroscope has no noise.
 
 
-La manera más común de unir estos dos sensores para suavizar el ruido en la medición es mediante un Filtro Complementario, el cual toma los ángulos calculados en base a la medición de los dos sensores y por medio de estimaciones se obtienen valores más estables.
+The most common way to connect these sensors to smooth noise in measurements is by means of a Complementary Filter, which takes the angles calculated based on the measurement of the sensors and by estimating if stable values ​​are obtained.
 
 
-La ecuación para calcular el ángulo usando el filtro de complemento es:
+The way to calculate the angle using the complement filter is:
 
-angulo = 0.98(angulo + Wgiroscopio*dt) + 0.02(ANGacelerometro)
+  angulo = 0.98(angulo + Wgiroscopio*dt) + 0.02(ANGacelerometro)
 
 
-De esta forma el ángulo del acelerómetro está pasando por un filtro pasa bajos, amortiguando las variaciones bruscas de aceleración; y el ángulo calculado por el giroscopio tiene un filtro pasa altos teniendo gran influencia cuando hay rotaciones rápidas. Podemos probar también con otros valores diferentes a 0.98 y 0.02 pero siempre deben de sumar 1.
+In this way, the angle of the accelerometer is passing through a low pass filter, damping sudden variations in acceleration; and the angle calculated by the gyroscope has a high pass filter having great influence when there are fast rotations. We can also try other values ​​other than 0.98 and 0.02 but they must always add 1.
